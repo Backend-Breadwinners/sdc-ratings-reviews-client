@@ -171,9 +171,9 @@ const NewReviewForm = ({
     if (recommended === null) {
       required.push('product recommendation');
     }
-    if (Object.keys(charObj).length < Object.keys(characteristics).length) {
-      required.push('characteristics');
-    }
+    // if (Object.keys(charObj).length < Object.keys(characteristics).length) {
+    //   required.push('characteristics');
+    // }
     if (body.length < 50 || body.length > 1000) {
       required.push('review body');
     }
@@ -197,7 +197,7 @@ const NewReviewForm = ({
     e.preventDefault();
     if (!validationCheck()) {
       const options = {
-        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews',
+        url: 'http://localhost:5000/reviews',
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -209,10 +209,10 @@ const NewReviewForm = ({
           summary,
           body,
           recommend: recommended,
-          name: nickname,
-          email,
+          reviewer_name: nickname,
+          reviewer_email: email,
           photos,
-          characteristics: charObj,
+          // characteristics: charObj,
         },
       };
 

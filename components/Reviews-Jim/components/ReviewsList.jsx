@@ -47,7 +47,7 @@ const ReviewsList = ({
 
   const markReview = (e, reviewId, string) => {
     e.preventDefault();
-    let api = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/${reviewId}/`;
+    let api = `http://localhost:5000/reviews/${reviewId}/`;
 
     if (string === 'Yes') {
       api += 'helpful';
@@ -55,7 +55,6 @@ const ReviewsList = ({
     if (string === 'Report') {
       api += 'report';
     }
-
     const options = {
       url: api,
       method: 'put',
@@ -85,7 +84,6 @@ const ReviewsList = ({
   useEffect(() => {
     filterReviewList(productReviews, reviewCount, selectedRatings);
   }, [ratingsLength]);
-
   return (
     <div className="review-list">
       <div>
@@ -104,7 +102,7 @@ const ReviewsList = ({
         </select>
       </div>
       <div>
-        {renderedReviews.map((review) => <Review className="rendered-review" key={review.review_id} review={review} markReview={markReview} />)}
+        {renderedReviews.map((review) => <Review className="rendered-review" key={review.id} review={review} markReview={markReview} />)}
       </div>
       {!productReviews.length ? <div>Be the first to review this product.</div> : null}
       {(productReviews.length <= 2 || reviewCount >= productReviews.length) ? null : <Button id="more-reviews-btn" className="review-buttons" onClick={() => setReviewCount(reviewCount + 2)}>More Reviews</Button>}

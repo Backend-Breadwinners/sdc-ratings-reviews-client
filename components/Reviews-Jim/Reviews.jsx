@@ -14,7 +14,7 @@ const Reviews = ({
   productId, setProductRating, reviewsRef, productName,
 }) => {
   // const { trackEvent } = useTracking({ module: 'Reviews' });
-  const [productReviews, setProductReviews] = useState(null);
+  const [productReviews, setProductReviews] = useState([]);
   const [productMeta, setProductMeta] = useState(null);
   const [sortStatus, setSortStatus] = useState('relevant');
   const [renderToggle, setRenderToggle] = useState(false);
@@ -23,11 +23,11 @@ const Reviews = ({
   const [getToggle, setGetToggle] = useState(false);
 
   const getProductReviews = (product, sort, count = 100) => {
-    let api = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-bld/reviews/?product_id=${product}&sort=${sort}`;
-
-    if (count) {
-      api += `&count=${count}`;
-    }
+    const api = `http://localhost:5000/reviews/${product}`;
+    console.log('product: ', product);
+    // if (count) {
+    //   api += `&count=${count}`;
+    // }
 
     const options = {
       url: api,
@@ -39,7 +39,8 @@ const Reviews = ({
 
     axios(options)
       .then((res) => {
-        setProductReviews(res.data.results);
+        console.log({res});
+        setProductReviews(res.data);
       })
       .then(() => {
         setGetToggle(false);

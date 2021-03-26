@@ -48,7 +48,7 @@ const Review = ({ review, markReview }) => {
           )}
       </Row>
       <Row className="review-photos">
-        {review.photos.map((photo) => <img key={photo.id} className="review-photo" alt="" src={photo.url} onClick={() => { setShow(true); setImage(photo.url); }} />)}
+        {review.photos && review.photos.map((photo) => <img key={photo.id} className="review-photo" alt="" src={photo.url} onClick={() => { setShow(true); setImage(photo.url); }} />)}
       </Row>
       {review.recommend ? <Row><Col>✓ I recommend this product</Col></Row> : null}
       {review.response ? (
@@ -71,13 +71,13 @@ const Review = ({ review, markReview }) => {
           <Col>
             Was this review helpful?
             {' '}
-            <span style={{ cursor: 'pointer' }} onClick={(e) => { markReview(e, review.review_id, 'Yes'); setHelpful(true); }}><u>Yes</u></span>
+            <span style={{ cursor: 'pointer' }} onClick={(e) => { markReview(e, review.id, 'Yes'); setHelpful(true); }}><u>Yes</u></span>
             {' '}
             (
             {review.helpfulness}
             ) |
             {' '}
-            <span style={{ cursor: 'pointer' }} value="Report" onClick={(e) => markReview(e, review.review_id, 'Report')}><u>Report</u></span>
+            <span style={{ cursor: 'pointer' }} value="Report" onClick={(e) => markReview(e, review.id, 'Report')}><u>Report</u></span>
           </Col>
         )}
       </Row>
