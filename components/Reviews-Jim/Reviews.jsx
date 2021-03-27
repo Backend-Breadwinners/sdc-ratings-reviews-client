@@ -23,7 +23,8 @@ const Reviews = ({
   const [getToggle, setGetToggle] = useState(false);
 
   const getProductReviews = (product, sort, count = 100) => {
-    const api = `http://localhost:5000/reviews/${product}`;
+    const api = `http://3.12.241.25:5000/reviews/${product}`;
+    // const api = `http://localhost:5000/reviews/${product}`;
     console.log('product: ', product);
     // if (count) {
     //   api += `&count=${count}`;

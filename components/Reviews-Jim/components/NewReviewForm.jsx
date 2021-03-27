@@ -197,7 +197,8 @@ const NewReviewForm = ({
     e.preventDefault();
     if (!validationCheck()) {
       const options = {
-        url: 'http://localhost:5000/reviews',
+        url: 'http://3.12.241.25:5000/reviews/',
+        // url: 'http://localhost:5000/reviews',
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
@@ -215,7 +216,6 @@ const NewReviewForm = ({
           // characteristics: charObj,
         },
       };
-
       axios(options)
         .then((res) => {
           console.log('Review Sent! ', res);

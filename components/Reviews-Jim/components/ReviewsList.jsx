@@ -47,7 +47,8 @@ const ReviewsList = ({
 
   const markReview = (e, reviewId, string) => {
     e.preventDefault();
-    let api = `http://localhost:5000/reviews/${reviewId}/`;
+    console.log('REVIEWID: ', reviewId);
+    let api = `http://3.12.241.25:5000/reviews/${reviewId}/`;
 
     if (string === 'Yes') {
       api += 'helpful';
